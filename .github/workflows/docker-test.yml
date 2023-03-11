@@ -30,4 +30,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: adi0509/flask-test::$(date +%s)
+          tags: adi0509/flask-test:$(date +%s)
