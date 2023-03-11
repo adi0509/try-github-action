@@ -30,7 +30,9 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            adi0509/flasktest
+            adi0509/flask-test
+          tags: |
+            type=schedule
       -
         name: Build and push
         uses: docker/build-push-action@v4
