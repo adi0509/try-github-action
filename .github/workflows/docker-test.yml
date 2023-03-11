@@ -24,20 +24,20 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: |
-            adi0509/flask-test
-          tags: |
-            type=schedule
+      # -
+      #   name: Docker meta
+      #   id: meta
+      #   uses: docker/metadata-action@v4
+      #   with:
+      #     images: |
+      #       adi0509/flask-test
+      #     tags: |
+      #       type=schedule
       -
         name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: adi0509/flask-test:${{ github.sha }}
+          # labels: ${{ steps.meta.outputs.labels }}
