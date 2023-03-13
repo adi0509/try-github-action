@@ -1,4 +1,4 @@
-name: upload-docker-image
+name: k8s-deployment
 
 on:
   workflow_run:
