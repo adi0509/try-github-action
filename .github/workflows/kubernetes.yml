@@ -3,14 +3,13 @@ name: k8s-deployment
 on:
   workflow_run:
     workflows: ["upload-docker-image"]
-    branches: [main]
     types: 
       - completed
 
 jobs:
   deploy:
     name: Deploy
-    if: github.ref == 'refs/heads/master'
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Set the Kubernetes context
