@@ -1,4 +1,4 @@
-name: ci
+name: upload-docker-image
 
 on:
   push:
@@ -31,3 +31,5 @@ jobs:
           context: .
           push: true
           tags: adi0509/flask-test:${{ github.sha }}, adi0509/flask-test:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
