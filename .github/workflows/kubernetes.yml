@@ -16,8 +16,8 @@ jobs:
         uses: azure/k8s-set-context@v2
         with:
           method: service-account
-          k8s-url: ${{ secrets.KUBERNETES_URL }}
-          k8s-secret: ${{ secrets.KUBERNETES_SECRET }}
+          k8s-url: ${{ vars.KUBERNETES_URL }}
+          k8s-secret: ${{ vars.KUBERNETES_SECRET }}
 
       - name: Checkout source code
         uses: actions/checkout@v3

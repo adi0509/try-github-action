@@ -17,5 +17,6 @@ spec:
       containers:
       - name: flask
         image: adi0509/flask-test:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 5000

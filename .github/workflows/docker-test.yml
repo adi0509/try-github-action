@@ -33,3 +33,23 @@ jobs:
           tags: adi0509/flask-test:${{ github.sha }}, adi0509/flask-test:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - 
+        name: Create k8s Kind Cluster
+        uses: helm/kind-action@v1.4.0
+      
+      -
+        name: deploy k8s-deployment
+        run: |
+          echo "deploying flask deployment"
+          kubectl apply kubernetes/deployment.yaml
+          echo "deploying flask service"
+          kubectl apply kubernetes/service.yaml
+      
+      -
+        name: testing k8s-deployment
+        run: |
+          if curl -sL --fail localhost:5000 -o /dev/null; then
+              echo "Success"
+          else
+              echo "Fail"
+          fi
