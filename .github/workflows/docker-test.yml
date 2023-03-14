@@ -41,9 +41,9 @@ jobs:
         name: deploy k8s-deployment
         run: |
           echo "deploying flask deployment"
-          kubectl apply kubernetes/deployment.yaml
+          kubectl apply -f kubernetes/deployment.yaml
           echo "deploying flask service"
-          kubectl apply kubernetes/service.yaml
+          kubectl apply -f kubernetes/service.yaml
       
       -
         name: testing k8s-deployment
