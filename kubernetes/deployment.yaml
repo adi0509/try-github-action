@@ -19,4 +19,4 @@ spec:
         image: adi0509/flask-test:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 30000
+        - containerPort: 5000
