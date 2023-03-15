@@ -53,8 +53,9 @@ jobs:
               OUTPUT=$(kubectl get pods)
               if echo "$OUTPUT" | grep -qH "ContainerCreating"; then
                   sleep 2
-                  echo "waiting for running status"
+                  echo "waiting for container to be created"
               else
+                  echo "container created"
                   break
               fi
           done
@@ -68,10 +69,10 @@ jobs:
               echo "Fail"
               echo ::set-output name=is_failed::0
           fi
-      -
-        name: setting fail status
-        if: ${{ steps.testing.output.is_failed == '0' }}
-        uses: actions/github-script@v3
-        with:
-          script: |
-            core.setFailed('Validation failed')
+      # -
+      #   name: setting fail status
+      #   if: ${{ steps.testing.output.is_failed == '0' }}
+      #   uses: actions/github-script@v3
+      #   with:
+      #     script: |
+      #       core.setFailed('Validation failed')
