@@ -48,6 +48,11 @@ jobs:
       -
         name: testing
         run: |
+          while $(kubectl get pods) | grep -qH "ContainerCreating";
+          do
+              sleep 2
+              echo "waiting for running status"
+          done
           #for testing
           echo "curl output: "
           curl localhost:30000
