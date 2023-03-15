@@ -48,10 +48,15 @@ jobs:
       -
         name: testing
         run: |
-          while $(kubectl get pods) | grep -qH "ContainerCreating";
+          while true;
           do
-              sleep 2
-              echo "waiting for running status"
+              OUTPUT=$(kubectl get pods)
+              if echo "$OUTPUT" | grep -qH "ContainerCreating"; then
+                  sleep 2
+                  echo "waiting for running status"
+              else
+                  break
+              fi
           done
           #for testing
           echo "curl output: "
