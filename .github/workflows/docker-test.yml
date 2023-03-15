@@ -36,6 +36,8 @@ jobs:
       - 
         name: Create k8s Kind Cluster
         uses: helm/kind-action@v1.4.0
+        with:
+          config: k8s-config/kind-config.yaml
       
       -
         name: deploy k8s-deployment
@@ -61,8 +63,8 @@ jobs:
           done
           #for testing
           #echo "curl output: "
-          #curl localhost:31000
-          if curl -sL --fail localhost:31000 -o /dev/null; then
+          #curl localhost:30000
+          if curl -sL --fail localhost:30000 -o /dev/null; then
               echo "Success"
               echo ::set-output name=is_failed::1
           else
