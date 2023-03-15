@@ -61,8 +61,8 @@ jobs:
           done
           #for testing
           #echo "curl output: "
-          #curl localhost:30000
-          if curl -sL --fail localhost:30000 -o /dev/null; then
+          #curl localhost:31000
+          if curl -sL --fail localhost:31000 -o /dev/null; then
               echo "Success"
               echo ::set-output name=is_failed::1
           else
