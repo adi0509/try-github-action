@@ -31,3 +31,8 @@ jobs:
             kubernetes/service.yaml
           images: |
             adi0509/flask-test:latest
+      -
+        name: redeploy deployment
+        run: |
+          echo "redeploying flask deployment"
+          kubectl rollout restart deployment my-flask-app

@@ -62,14 +62,14 @@ jobs:
               fi
           done
           #for testing
-          #echo "curl output: "
-          #curl localhost:30000
+          #echo "docker ps output: "
+          docker ps
           if curl -sL --fail localhost:30000 -o /dev/null; then
               echo "Success"
-              echo ::set-output name=is_failed::1
+              echo "is_failed=1" >> $GITHUB_OUTPUT
           else
               echo "Fail"
-              echo ::set-output name=is_failed::0
+              echo "is_failed=0" >> $GITHUB_OUTPUT
           fi
       # -
       #   name: setting fail status
