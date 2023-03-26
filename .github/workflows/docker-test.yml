@@ -31,6 +31,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: adi0509/flask-test:${{ github.sha }}, adi0509/flask-test:latest
           cache-from: type=gha
