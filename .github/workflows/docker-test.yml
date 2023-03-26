@@ -5,7 +5,7 @@ on:
     branches:
       - 'main'
     paths:
-      - "flask"
+      - "flask/**"
 
 jobs:
   docker:
